@@ -15,7 +15,12 @@ export default defineConfig([
   {
     files: ['**/*.{js,ts}'],
     extends: [radham],
-    languageOptions: { globals: globals.nodeBuiltin }
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.nodeBuiltin
+      }
+    }
   },
   {
     files: ['**/*.json'],

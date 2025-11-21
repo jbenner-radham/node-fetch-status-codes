@@ -40,10 +40,14 @@
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest"
   },
+  "dependencies": {
+    "jsdom": "^27.2.0"
+  },
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
     "@eslint/json": "^0.14.0",
     "@radham/eslint-config": "^10.1.0",
+    "@types/jsdom": "^27.0.0",
     "@types/node": "^22.18.8",
     "@vitest/coverage-v8": "^4.0.12",
     "duo-build": "^0.2.1",
