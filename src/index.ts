@@ -18,7 +18,7 @@ export default async function fetchStatusCodes(): Promise<StatusCode[]> {
       return anchor.href;
     }
 
-    // The IANA links are redirects, so we use the direct link and add the section if present.
+    // The IANA links are redirects, but we want direct links with the section if present.
     const url = new URL('https://www.rfc-editor.org/rfc/');
     const pattern = /RFC(\d+)(?:, Section )?((\d+)?(.?\d+?)?(.?\d+)?)/;
     const [, rfc, section] = pattern.exec(anchor.textContent) ?? [];

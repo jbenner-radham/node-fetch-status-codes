@@ -1,6 +1,5 @@
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
-  - '@radham/eslint-config@10.1.0'
-  - '@stylistic/eslint-plugin@5.6.1'
+  - '@radham/eslint-config@11.0.0'
 onlyBuiltDependencies:
   - esbuild@0.25.11 || 0.25.12
