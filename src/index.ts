@@ -1,7 +1,5 @@
 import { JSDOM } from 'jsdom';
 
-// JSDOM.defaultDocumentFeatures = { QuerySelector: true };
-
 export type Reference = { title: string; link: string };
 
 export type StatusCode = { value: number; description: string; references: Reference[] };
@@ -12,7 +10,7 @@ export default async function fetchStatusCodes(): Promise<StatusCode[]> {
   const html = await response.text();
   const dom = new JSDOM(html);
   const table = dom.window.document.getElementById('table-http-status-codes-1')!;
-  const rows = Array.from(table.querySelectorAll('tbody > tr'));
+  const rows = Array.from(table.querySelectorAll<HTMLTableRowElement>('tbody > tr'));
   const getReferenceLink = (anchor: HTMLAnchorElement): string => {
     if (!anchor.textContent.startsWith('RFC')) {
       return anchor.href;
@@ -42,4 +40,9 @@ export default async function fetchStatusCodes(): Promise<StatusCode[]> {
     }));
 }
 
-// console.dir(await fetchStatusCodes(), { depth: null });
+console.dir(await fetchStatusCodes(), { depth: null });
+
+// console.debug(
+
+// (await fetchStatusCodes()).at(0)!
+// );
