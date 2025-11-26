@@ -24,7 +24,7 @@ await fetchStatusCodes();
 // >>>     references: [
 // >>>       {
 // >>>         name: 'RFC9110, Section 15.2.1',
-// >>>         link: 'https://www.rfc-editor.org/rfc/rfc9110.html#section-15.2.1'
+// >>>         url: 'https://www.rfc-editor.org/rfc/rfc9110.html#section-15.2.1'
 // >>>       }
 // >>>     ]
 // >>>   },
@@ -39,7 +39,7 @@ await fetchStatusCodes({ resolveRedirects: false })
 // >>>     references: [
 // >>>       {
 // >>>         name: 'RFC9110, Section 15.2.1',
-// >>>         link: 'https://www.iana.org/go/rfc9110'
+// >>>         url: 'https://www.iana.org/go/rfc9110'
 // >>>       }
 // >>>     ]
 // >>>   },

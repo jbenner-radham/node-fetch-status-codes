@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 
-export type Reference = { name: string; link: string };
+export type Reference = { name: string; url: string };
 
 export type StatusCode = { value: number; description: string; references: Reference[] };
 
@@ -38,7 +38,7 @@ export default async function fetchStatusCodes({ resolveRedirects = true }: {
       description: cells.at(1)!.textContent,
       references: await Promise.all(Array.from(cells.at(2)!.querySelectorAll('a'))
         .map(async anchor =>
-          ({ name: anchor.textContent!, link: await getReferenceLink(anchor) })
+          ({ name: anchor.textContent!, url: await getReferenceLink(anchor) })
         )
       )
     })));
