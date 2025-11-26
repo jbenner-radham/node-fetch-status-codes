@@ -43,5 +43,3 @@ export default async function fetchStatusCodes({ resolveRedirects = true }: {
       )
     })));
 }
-
-console.dir(await fetchStatusCodes({ resolveRedirects: true }), { depth: null });
