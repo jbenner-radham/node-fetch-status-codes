@@ -31,7 +31,7 @@ await fetchStatusCodes();
 // >>>   ...
 // >>> ]
 
-await fetchStatusCodes({ resolveRedirects: false })
+await fetchStatusCodes({ resolveRedirects: false });
 // >>> [
 // >>>   {
 // >>>     value: 100,
