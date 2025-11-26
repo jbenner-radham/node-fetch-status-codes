@@ -21,7 +21,7 @@ export default async function fetchStatusCodes({ resolveRedirects = true }: {
     // The IANA links are redirects, but we want direct links with a section hash if applicable.
     const response = await fetch(anchor.href, { method: 'HEAD', redirect: 'manual' });
     const url = new URL(response.status === 301 ? response.headers.get('Location')! : anchor.href);
-    const pattern = /RFC\d+(?:, Section )?((\d+)?(.?\d+?)?(.?\d+)?)/;
+    const pattern = /RFC\d+(?:, Section )?((?:\d+)?(?:.\d+){0,2})/;
     const [, section] = pattern.exec(anchor.textContent) ?? [];
 
     if (section) {
