@@ -2,7 +2,14 @@
   "name": "fetch-status-codes",
   "version": "0.1.0",
   "description": "Fetch the HTTP status codes from the IANA registry.",
-  "keywords": [],
+  "keywords": [
+    "code",
+    "fetch",
+    "http",
+    "iana",
+    "registry",
+    "status"
+  ],
   "homepage": "https://github.com/jbenner-radham/node-fetch-status-codes#readme",
   "bugs": {
     "url": "https://github.com/jbenner-radham/node-fetch-status-codes/issues"
