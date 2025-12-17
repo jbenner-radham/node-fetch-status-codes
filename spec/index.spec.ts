@@ -25,13 +25,21 @@ describe('fetchStatusCodes', () => {
   it('it returns an array containing the status code 100', async () => {
     const statusCodes = await fetchStatusCodes();
 
-    expect(statusCodes.at(0)!.value).toEqual(100);
+    expect(statusCodes.at(0)).toEqual({
+      value: 100,
+      description: 'Continue',
+      references: expect.any(Array)
+    });
   });
 
   it('it returns an array containing the status code 511', async () => {
     const statusCodes = await fetchStatusCodes();
 
-    expect(statusCodes.at(-1)!.value).toEqual(511);
+    expect(statusCodes.at(-1)).toEqual({
+      value: 511,
+      description: 'Network Authentication Required',
+      references: expect.any(Array)
+    });
   });
 });
 
