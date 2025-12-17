@@ -14,7 +14,7 @@ Usage
 -----
 
 ```typescript
-import fetchStatusCodes from 'fetch-status-codes';
+import fetchStatusCodes, { fetchStatusCodeClasses } from 'fetch-status-codes';
 
 await fetchStatusCodes();
 // >>> [
@@ -42,6 +42,16 @@ await fetchStatusCodes({ resolveRedirects: false });
 // >>>         url: 'https://www.iana.org/go/rfc9110'
 // >>>       }
 // >>>     ]
+// >>>   },
+// >>>   ...
+// >>> ]
+
+await fetchStatusCodeClasses();
+// >>> [
+// >>>   {
+// >>>     value: '1xx',
+// >>>     name: 'Informational',
+// >>>     description: 'Request received, continuing process'
 // >>>   },
 // >>>   ...
 // >>> ]

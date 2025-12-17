@@ -4,13 +4,20 @@ export type Reference = { name: string; url: string };
 
 export type StatusCode = { value: number; description: string; references: Reference[] };
 
-export default async function fetchStatusCodes({ resolveRedirects = true }: {
-  resolveRedirects?: boolean;
-} = {}): Promise<StatusCode[]> {
+export type StatusCodeClass = { value: string; name: string; description: string };
+
+async function fetchRegistryDom(): Promise<JSDOM> {
   const url = 'https://www.iana.org/assignments/http-status-codes';
   const response = await fetch(url);
   const html = await response.text();
-  const dom = new JSDOM(html);
+
+  return new JSDOM(html);
+}
+
+export default async function fetchStatusCodes({ resolveRedirects = true }: {
+  resolveRedirects?: boolean;
+} = {}): Promise<StatusCode[]> {
+  const dom = await fetchRegistryDom();
   const table = dom.window.document.getElementById('table-http-status-codes-1')!;
   const rows = Array.from(table.querySelectorAll<HTMLTableRowElement>('tbody > tr'));
   const getReferenceLink = async (anchor: HTMLAnchorElement): Promise<string> => {
@@ -42,4 +49,18 @@ export default async function fetchStatusCodes({ resolveRedirects = true }: {
         )
       )
     })));
+}
+
+export async function fetchStatusCodeClasses(): Promise<StatusCodeClass[]> {
+  const dom = await fetchRegistryDom();
+  const note = Array.from(dom.window.document.querySelectorAll('dt'))
+    .find(element => element.textContent.trim() === 'Note')
+    ?.nextElementSibling!.textContent.trim();
+  const pattern = /^(?<value>\dxx): (?<name>[ A-Za-z]+) - (?<description>[ ,A-Za-z]+)$/;
+
+  return note?.split('\n').map(line => {
+    const { value = '', name = '', description = '' } = pattern.exec(line)?.groups ?? {};
+
+    return { value, name, description };
+  }) ?? [];
 }
