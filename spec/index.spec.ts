@@ -22,7 +22,7 @@ describe('fetchStatusCodes', () => {
     expect(fetchStatusCodes).toBeTypeOf('function');
   });
 
-  it('it returns an array containing the status code 100', async () => {
+  it('returns an array containing the status code 100', async () => {
     const statusCodes = await fetchStatusCodes();
 
     expect(statusCodes.at(0)).toEqual({
@@ -32,7 +32,7 @@ describe('fetchStatusCodes', () => {
     });
   });
 
-  it('it returns an array containing the status code 511', async () => {
+  it('returns an array containing the status code 511', async () => {
     const statusCodes = await fetchStatusCodes();
 
     expect(statusCodes.at(-1)).toEqual({
@@ -56,7 +56,7 @@ describe('fetchStatusCodeClasses', () => {
     expect(fetchStatusCodeClasses).toBeTypeOf('function');
   });
 
-  it('it returns an array containing the 1xx status code class', async () => {
+  it('returns an array containing the 1xx status code class', async () => {
     const statusCodeClasses = await fetchStatusCodeClasses();
 
     expect(statusCodeClasses.at(0)).toEqual({
@@ -66,7 +66,7 @@ describe('fetchStatusCodeClasses', () => {
     });
   });
 
-  it('it returns an array containing the 5xx status code class', async () => {
+  it('returns an array containing the 5xx status code class', async () => {
     const statusCodeClasses = await fetchStatusCodeClasses();
 
     expect(statusCodeClasses.at(-1)).toEqual({
