@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "Fetch the HTTP status codes from the IANA registry.",
   "keywords": [
+    "class",
     "code",
     "fetch",
     "http",
