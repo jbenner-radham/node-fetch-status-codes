@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - A `fetchStatusCodeClasses` function, to fetch the HTTP status code classes.
 
+### Changed
+
+- Upgraded [jsdom](https://github.com/jsdom/jsdom#readme) from v27.2.0 to v27.3.0.
+
 [0.1.1] - 2025-11-26
 --------------------
 
