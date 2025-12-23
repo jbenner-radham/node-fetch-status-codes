@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgraded [jsdom](https://github.com/jsdom/jsdom#readme) from v27.2.0 to v27.3.0.
 
+### Fixed
+
+- Redirect resolution. Previously it was only being done on 301 status codes,
+  now all 3xx responses with a location header are resolved.
+
 [0.1.1] - 2025-11-26
 --------------------
 

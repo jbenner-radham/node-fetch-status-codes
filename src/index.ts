@@ -6,6 +6,12 @@ export type StatusCode = { value: number; description: string; references: Refer
 
 export type StatusCodeClass = { value: string; name: string; description: string };
 
+function attempt<T>(callback: () => T): T | undefined {
+  try {
+    return callback();
+  } catch { /* Do nothing. */ }
+}
+
 async function fetchRegistryDom(): Promise<JSDOM> {
   const url = 'https://www.iana.org/assignments/http-status-codes';
   const response = await fetch(url);
@@ -27,7 +33,17 @@ export default async function fetchStatusCodes({ resolveRedirects = true }: {
 
     // The IANA links are redirects, but we want direct links with a section hash if applicable.
     const response = await fetch(anchor.href, { method: 'HEAD', redirect: 'manual' });
-    const url = new URL(response.status === 301 ? response.headers.get('Location')! : anchor.href);
+
+    // The location header returned by some ietf.org pages is relative
+    // (e.g., /doc/status-change-http-experiments-to-historic/) so check to make
+    // sure the location is a valid URL and fall back to the anchor href if not.
+    const url = attempt(
+      () => new URL(
+        response.status.toString().startsWith('3') && response.headers.has('Location')
+          ? response.headers.get('Location')!
+          : anchor.href
+      )
+    ) ?? new URL(anchor.href);
     const pattern = /RFC\d+(?:, Section )?((?:\d+)?(?:.\d+){0,2})/;
     const [, section] = pattern.exec(anchor.textContent) ?? [];
 
