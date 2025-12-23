@@ -54,6 +54,7 @@
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
     "@eslint/json": "^0.14.0",
+    "@radham/changelog": "^0.1.0",
     "@radham/eslint-config": "^11.0.0",
     "@types/jsdom": "^27.0.0",
     "@types/node": "^22.18.8",

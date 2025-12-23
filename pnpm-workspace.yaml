@@ -1,3 +1,5 @@
 allowBuilds:
   esbuild@0.25.11 || 0.25.12: true
 minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - '@radham/changelog'
