@@ -59,7 +59,7 @@
     "@radham/eslint-config": "^11.0.0",
     "@types/jsdom": "^27.0.0",
     "@types/node": "^22.18.8",
-    "@vitest/coverage-v8": "^4.0.14",
+    "@vitest/coverage-v8": "^4.0.16",
     "duo-build": "^0.2.1",
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
@@ -68,7 +68,7 @@
     "rimraf": "^6.1.2",
     "sort-package-json": "^3.4.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.14"
+    "vitest": "^4.0.16"
   },
   "packageManager": "pnpm@10.26.2",
   "engines": {
