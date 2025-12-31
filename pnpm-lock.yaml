@@ -11,6 +11,9 @@ importers:
       jsdom:
         specifier: ^27.4.0
         version: 27.4.0
+      regex:
+        specifier: ^6.1.0
+        version: 6.1.0
     devDependencies:
       '@eslint/compat':
         specifier: ^2.0.0
@@ -1744,6 +1747,12 @@ packages:
   read-pkg@10.0.0:
     resolution: {integrity: sha512-A70UlgfNdKI5NSvTTfHzLQj7NJRpJ4mT5tGafkllJ4wh71oYuGm/pzphHcmW4s35iox56KSK721AihodoXSc/A==}
     engines: {node: '>=20'}
+
+  regex-utilities@2.3.0:
+    resolution: {integrity: sha512-8VhliFJAWRaUiVvREIiW2NXXTmHs4vMNnSzuJVhscgmGav3g9VDxLrQndI3dZZVVdp0ZO/5v0xmX516/7M9cng==}
+
+  regex@6.1.0:
+    resolution: {integrity: sha512-6VwtthbV4o/7+OaAF9I5L5V3llLEsoPyq9P1JVXkedTP33c7MfCG0/5NOPcSJn0TzXcG9YUrR0gQSWioew3LDg==}
 
   regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
@@ -3910,6 +3919,12 @@ snapshots:
       parse-json: 8.3.0
       type-fest: 5.3.1
       unicorn-magic: 0.3.0
+
+  regex-utilities@2.3.0: {}
+
+  regex@6.1.0:
+    dependencies:
+      regex-utilities: 2.3.0
 
   regexp-tree@0.1.27: {}
 

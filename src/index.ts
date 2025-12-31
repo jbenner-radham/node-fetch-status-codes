@@ -1,4 +1,5 @@
 import { JSDOM } from 'jsdom';
+import { regex } from 'regex';
 
 export type Reference = { name: string; url: string };
 
@@ -44,8 +45,13 @@ export default async function fetchStatusCodes({ resolveRedirects = false }: {
           : anchor.href
       )
     ) ?? new URL(anchor.href);
-    // eslint-disable-next-line unicorn/better-regex
-    const pattern = /^RFC\d+(?:, Section )?(?<section>\d+(?:.\d*)(?:.\d*))?$/;
+    const pattern = regex`
+      ^ RFC\d+(,${' '}Section${' '})?(?<section> \d+ \g<subsection> \g<subsection>)? $
+
+      (?(DEFINE)
+        (?<subsection> .*\d*)
+      )
+    `;
     const { section = '' } = pattern.exec(anchor.textContent)?.groups ?? {};
 
     if (section.length) {
