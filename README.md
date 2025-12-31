@@ -16,6 +16,8 @@ Usage
 ```typescript
 import fetchStatusCodes, { fetchStatusCodeClasses } from 'fetch-status-codes';
 
+// Calling `fetchStatusCodes()` without any arguments implicitly sets the `resolveRedirects` option
+// to `false`.
 await fetchStatusCodes();
 // >>> [
 // >>>   {
@@ -24,14 +26,18 @@ await fetchStatusCodes();
 // >>>     references: [
 // >>>       {
 // >>>         name: 'RFC9110, Section 15.2.1',
-// >>>         url: 'https://www.rfc-editor.org/rfc/rfc9110.html#section-15.2.1'
+// >>>         url: 'https://www.iana.org/go/rfc9110'
 // >>>       }
 // >>>     ]
 // >>>   },
 // >>>   ...
 // >>> ]
 
-await fetchStatusCodes({ resolveRedirects: false });
+// Calling `fetchStatusCodes()` with the `resolveRedirects` option set to `true` gives you arguably
+// better URLs since they aren't redirects and they will link directly to the relevant section if
+// applicable. However, this will also add approximately one second of additional execution time to
+// the app e.g., ~1.616s without resolution versus ~2.655s with resolution.
+await fetchStatusCodes({ resolveRedirects: true });
 // >>> [
 // >>>   {
 // >>>     value: 100,
@@ -39,7 +45,7 @@ await fetchStatusCodes({ resolveRedirects: false });
 // >>>     references: [
 // >>>       {
 // >>>         name: 'RFC9110, Section 15.2.1',
-// >>>         url: 'https://www.iana.org/go/rfc9110'
+// >>>         url: 'https://www.rfc-editor.org/rfc/rfc9110.html#section-15.2.1'
 // >>>       }
 // >>>     ]
 // >>>   },

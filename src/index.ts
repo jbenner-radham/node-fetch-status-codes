@@ -20,7 +20,7 @@ async function fetchRegistryDom(): Promise<JSDOM> {
   return new JSDOM(html);
 }
 
-export default async function fetchStatusCodes({ resolveRedirects = true }: {
+export default async function fetchStatusCodes({ resolveRedirects = false }: {
   resolveRedirects?: boolean;
 } = {}): Promise<StatusCode[]> {
   const dom = await fetchRegistryDom();
