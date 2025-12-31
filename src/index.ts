@@ -6,7 +6,7 @@ export type StatusCode = { value: number; description: string; references: Refer
 
 export type StatusCodeClass = { value: string; name: string; description: string };
 
-function attempt<T>(callback: () => T): T | undefined {
+function attempt<T>(callback: () => T): T | void {
   try {
     return callback();
   } catch { /* Do nothing. */ }
@@ -44,10 +44,11 @@ export default async function fetchStatusCodes({ resolveRedirects = false }: {
           : anchor.href
       )
     ) ?? new URL(anchor.href);
-    const pattern = /RFC\d+(?:, Section )?((?:\d+)?(?:.\d+){0,2})/;
-    const [, section] = pattern.exec(anchor.textContent) ?? [];
+    // eslint-disable-next-line unicorn/better-regex
+    const pattern = /^RFC\d+(?:, Section )?(?<section>\d+(?:.\d*)(?:.\d*))?$/;
+    const { section = '' } = pattern.exec(anchor.textContent)?.groups ?? {};
 
-    if (section) {
+    if (section.length) {
       url.hash = `section-${section}`;
     }
 
